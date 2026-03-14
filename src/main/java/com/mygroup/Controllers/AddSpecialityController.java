@@ -1,6 +1,7 @@
 package com.mygroup.Controllers;
 
-import com.mygroup.Models.Speciality;
+import com.mygroup.Contexts.SpecialityContext;
+import com.mygroup.Models.SpecialityModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -9,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.sql.SQLException;
 import java.util.Objects;
 
 public class AddSpecialityController {
@@ -21,17 +23,24 @@ public class AddSpecialityController {
 
     public boolean isAdded = false;
 
-    public ObservableList<Speciality> data = FXCollections.observableArrayList();
+    public SpecialityContext specialityContext;
+    public ObservableList<SpecialityModel> data = FXCollections.observableArrayList();
     @FXML
     public void initialize() {
-        addButton.setOnAction(actionEvent -> check());
+        addButton.setOnAction(actionEvent -> {
+            try {
+                check();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
-    public void setData(ObservableList<Speciality> data) {
+    public void setData(ObservableList<SpecialityModel> data) {
         this.data = data;
     }
 
-    public void check() {
+    public void check() throws SQLException {
         if (courseField.getText() == null || Objects.equals(courseField.getText(), "")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Ошибка");
@@ -50,7 +59,7 @@ public class AddSpecialityController {
             return;
         }
 
-        for (Speciality datum : data) {
+        for (SpecialityModel datum : data) {
             if (Objects.equals(datum.getCourse(), getCourse()) && Objects.equals(datum.getName(), getSpeciality())) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Ошибка");
@@ -61,7 +70,12 @@ public class AddSpecialityController {
             }
         }
 
-        isAdded = true;
+        SpecialityModel specialityModel = new SpecialityModel(
+                getCourse(), getSpeciality()
+        );
+        specialityContext.addSpecialityService.add(specialityModel);
+
+        //isAdded = true;
 
         Stage stage = (Stage) addButton.getScene().getWindow();
         stage.close();

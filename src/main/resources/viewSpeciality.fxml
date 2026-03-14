@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import org.kordamp.ikonli.javafx.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mygroup.Controllers.MainController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mygroup.Controllers.ViewSpecialityController">
     <children>
         <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 
@@ -31,7 +31,7 @@
                   <TableColumn prefWidth="85.0" text="Группа" />
                </columns>
             </TableView>
-             <Button mnemonicParsing="false" text="Удалить" GridPane.rowIndex="2"> <graphic>
+             <Button mnemonicParsing="false" text="Удалить" GridPane.rowIndex="2" fx:id="deleteButton"> <graphic>
                  <FontIcon iconColor="red" iconLiteral="fas-minus" />
              </graphic> </Button>
          </children>
