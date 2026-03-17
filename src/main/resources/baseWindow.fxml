@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mygroup.Controllers.BaseController">
+
+    <children>
+        <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
+            <children>
+                <MenuBar>
+                    <menus>
+                        <Menu mnemonicParsing="false" text="File">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Close" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Edit">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Delete" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Help">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="About" />
+                            </items>
+                        </Menu>
+                    </menus>
+                </MenuBar>
+
+                <HBox VBox.vgrow="ALWAYS">
+                    <children>
+                        <VBox prefHeight="575.0" prefWidth="119.0" spacing="2.0">
+                        <children>
+                            <Button alignment="BASELINE_LEFT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Специальности" fx:id="specialityButton">
+                                <graphic>
+                                    <FontIcon iconLiteral="mdi-format-list-bulleted" />
+                                </graphic>
+                            </Button>
+                            <Button alignment="BASELINE_LEFT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Сотрудники">
+                                <graphic>
+                                    <FontIcon iconLiteral="mdi-account-multiple" />
+                                </graphic>
+                            </Button>
+                            <Button alignment="BASELINE_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Группы">
+                                <graphic>
+                                    <FontIcon iconLiteral="mdi-school" />
+                                </graphic>
+                            </Button>
+                            <Button alignment="BASELINE_LEFT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Предметы">
+                                <graphic>
+                                    <FontIcon iconLiteral="mdi-book-open-variant" />
+                                </graphic>
+                            </Button>
+                            <Button alignment="BASELINE_LEFT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Расписание">
+                                <graphic>
+                                    <FontIcon iconLiteral="mdi-clock" />
+                                </graphic>
+                            </Button>
+                        </children>
+                        </VBox>
+                        <Separator orientation="VERTICAL" />
+
+                        <StackPane fx:id="stackPane" HBox.hgrow="ALWAYS" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

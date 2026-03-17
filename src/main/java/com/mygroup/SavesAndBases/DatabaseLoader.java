@@ -19,6 +19,10 @@ public class DatabaseLoader {
                 "CREATE TABLE IF NOT EXISTS speciality (id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL, " +
                         "course INTEGER NOT NULL, name STRING NOT NULL);"
         );
+        statement.execute(
+                "CREATE TABLE IF NOT EXISTS teachers (id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL, " +
+                        "name STRING NOT NULL, surname STRING NOT NULL, patronymic STRING);"
+        );
     }
 
 }

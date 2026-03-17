@@ -1,6 +1,8 @@
 package com.mygroup;
 
+import com.mygroup.Contexts.MainContext;
 import com.mygroup.Contexts.SpecialityContext;
+import com.mygroup.Controllers.BaseController;
 import com.mygroup.Controllers.ViewSpecialityController;
 import com.mygroup.SavesAndBases.DatabaseLoader;
 import com.mygroup.Services.AddSpecialityService;
@@ -16,7 +18,7 @@ import java.sql.SQLException;
 
 
 public class Main extends Application {
-    private static SpecialityContext specialityContext;
+    private static MainContext mainContext;
 
     public static void main(String[] args) throws SQLException {
         Connection connection = DatabaseLoader.run("jdbc:sqlite:./src/main/java/com/mygroup/databases/base.db");
@@ -24,19 +26,18 @@ public class Main extends Application {
         SpecialityService specialityService = new SpecialityService(connection);
         AddSpecialityService addSpecialityService = new AddSpecialityService(connection);
 
-        specialityContext = new SpecialityContext(specialityService, addSpecialityService);
+        mainContext = new MainContext(specialityService, addSpecialityService);
 
         launch();
     }
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/mainWindow.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/baseWindow.fxml"));
         Parent parent = fxmlLoader.load();
 
-        /*ViewSpecialityController viewSpecialityController = fxmlLoader.getController();
-        viewSpecialityController.setSpecialityContext(specialityContext);
-        viewSpecialityController.visualize(); */
+        BaseController baseController = fxmlLoader.getController();
+        baseController.setContext(mainContext);
 
         Scene scene = new Scene(parent);
         stage.setScene(scene);

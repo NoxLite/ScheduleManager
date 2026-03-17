@@ -5,18 +5,18 @@
 <?import javafx.scene.layout.*?>
 <?import org.kordamp.ikonli.javafx.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mygroup.Controllers.ViewSpecialityController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mygroup.Controllers.ViewSpecialityController">
     <children>
-        <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <GridPane layoutX="13.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="0.0">
 
             <columnConstraints>
                 <ColumnConstraints hgrow="ALWAYS" minWidth="0.0" prefWidth="100.0" />
             </columnConstraints>
 
             <rowConstraints>
-            <RowConstraints maxHeight="578.0" minHeight="0.0" prefHeight="50.0" vgrow="ALWAYS" />
-                <RowConstraints maxHeight="600.0" minHeight="10.0" prefHeight="513.0" vgrow="ALWAYS" />
-            <RowConstraints maxHeight="600.0" minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="60.0" minHeight="0.0" prefHeight="55.0" vgrow="ALWAYS" />
+                <RowConstraints minHeight="10.0" prefHeight="291.0" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="55.0" vgrow="ALWAYS" />
             </rowConstraints>
          <children>
             <Button fx:id="addButton" mnemonicParsing="false" text="Добавить специальность">
@@ -24,14 +24,13 @@
                     <FontIcon iconColor="green" iconLiteral="fas-plus" />
                 </graphic>
             </Button>
-            <TableView fx:id="specialityTable" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+            <TableView fx:id="specialityTable" prefHeight="320.0" prefWidth="580.0" GridPane.rowIndex="1">
                <columns>
                   <TableColumn fx:id="columnCourse" prefWidth="75.0" text="Курс" />
                   <TableColumn fx:id="columnName" prefWidth="270.0" text="Направление" />
-                  <TableColumn prefWidth="85.0" text="Группа" />
                </columns>
             </TableView>
-             <Button mnemonicParsing="false" text="Удалить" GridPane.rowIndex="2" fx:id="deleteButton"> <graphic>
+             <Button fx:id="deleteButton" mnemonicParsing="false" text="Удалить" GridPane.rowIndex="2"> <graphic>
                  <FontIcon iconColor="red" iconLiteral="fas-minus" />
              </graphic> </Button>
          </children>
