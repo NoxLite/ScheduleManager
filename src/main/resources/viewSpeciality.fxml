@@ -26,8 +26,8 @@
             </Button>
             <TableView fx:id="specialityTable" prefHeight="320.0" prefWidth="580.0" GridPane.rowIndex="1">
                <columns>
-                  <TableColumn fx:id="columnCourse" prefWidth="75.0" text="Курс" />
-                  <TableColumn fx:id="columnName" prefWidth="270.0" text="Направление" />
+                  <TableColumn fx:id="columnId" prefWidth="75.0" text="id" />
+                  <TableColumn fx:id="columnName" prefWidth="270.0" text="Название" />
                </columns>
             </TableView>
              <Button fx:id="deleteButton" mnemonicParsing="false" text="Удалить" GridPane.rowIndex="2"> <graphic>

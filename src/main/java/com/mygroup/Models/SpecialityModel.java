@@ -5,25 +5,38 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class SpecialityModel {
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-    private final IntegerProperty course;
-
+public class SpecialityModel extends BaseModel {
+    private IntegerProperty id;
     private final StringProperty name;
 
-    public SpecialityModel(IntegerProperty course, StringProperty name) {
-        this.course = course;
+    public SpecialityModel(ResultSet resultSet) throws SQLException {
+        super();
+        id = new SimpleIntegerProperty(resultSet.getInt("id"));
+        name = new SimpleStringProperty(resultSet.getString("name"));
+    }
+
+    public SpecialityModel(IntegerProperty id, StringProperty name) {
+        super();
+        this.id = id;
         this.name = name;
     }
 
-    public SpecialityModel(int course, String name) {
-        this.course = new SimpleIntegerProperty(course);
-
+    public SpecialityModel(int id, String name) {
+        super();
+        this.id = new SimpleIntegerProperty(id);
         this.name = new SimpleStringProperty(name);
     }
 
-    public IntegerProperty courseProperty() {
-        return course;
+    public SpecialityModel(String name) {
+        this.name = new SimpleStringProperty(name);
+    }
+
+
+    public IntegerProperty idProperty() {
+        return id;
     }
 
     public StringProperty nameProperty() {
@@ -31,7 +44,7 @@ public class SpecialityModel {
     }
 
     public Integer getCourse() {
-        return course.getValue();
+        return id.getValue();
     }
 
     public String getName() {

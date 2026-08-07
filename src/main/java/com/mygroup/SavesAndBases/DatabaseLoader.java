@@ -5,6 +5,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+На данный момент данный класс бесполезный потому что бд не спроектировано до конца.
+*/
+
 public class DatabaseLoader {
     public static Connection run(String url) throws SQLException {
         Connection connection = DriverManager.getConnection(url);
@@ -16,8 +20,12 @@ public class DatabaseLoader {
         Statement statement = connection.createStatement();
 
         statement.execute(
-                "CREATE TABLE IF NOT EXISTS speciality (id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL, " +
-                        "course INTEGER NOT NULL, name STRING NOT NULL);"
+                "CCREATE TABLE speciality ( id   INTEGER PRIMARY KEY" +
+                        "                 UNIQUE" +
+                        "                 NOT NULL" +
+                        "    name TEXT    NOT NULL" +
+                        "                 UNIQUE" +
+                        ");"
         );
         statement.execute(
                 "CREATE TABLE IF NOT EXISTS teachers (id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL, " +

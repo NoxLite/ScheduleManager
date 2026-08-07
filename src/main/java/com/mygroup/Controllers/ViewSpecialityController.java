@@ -1,7 +1,8 @@
 package com.mygroup.Controllers;
 
-import com.mygroup.Contexts.SpecialityContext;
+
 import com.mygroup.Models.SpecialityModel;
+import com.mygroup.Services.SpecialityService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,25 +20,29 @@ import java.util.Objects;
 
 public class ViewSpecialityController {
 
-    private ObservableList<SpecialityModel> tableData = FXCollections.observableArrayList();
+    private ObservableList tableData = FXCollections.observableArrayList();
 
     @FXML
-    public Button addButton;
+    private Button addButton;
     @FXML
-    public TableView<SpecialityModel> specialityTable;
+    private TableView<SpecialityModel> specialityTable;
+    @FXML
+    private Button deleteButton;
+    @FXML
+    private TableColumn<SpecialityModel, Integer> columnId;
+    @FXML
+    private TableColumn<SpecialityModel, String> columnName;
 
-    public TableColumn<SpecialityModel, Integer> columnCourse;
-    public TableColumn<SpecialityModel, String> columnName;
-    public Button deleteButton;
+    private SpecialityService specialityService;
 
-    private SpecialityContext specialityContext;
+    public ViewSpecialityController() throws SQLException {
+        this.specialityService = new SpecialityService();
+    }
 
     @FXML
     public void initialize() {
-
-
         columnName.setCellValueFactory(c -> c.getValue().nameProperty());
-        columnCourse.setCellValueFactory(c -> c.getValue().courseProperty().asObject());
+        columnId.setCellValueFactory(c -> c.getValue().idProperty().asObject());
 
         addButton.setOnAction(actionEvent -> {
             try {
@@ -61,9 +66,7 @@ public class ViewSpecialityController {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/addSpeciality.fxml")));
         Parent scene = loader.load();
-        AddSpecialityController controller = loader.getController();
-        controller.setData(tableData);
-        controller.specialityContext = specialityContext;
+
         stage.setScene(new Scene(scene));
         stage.setResizable(false);
         stage.showAndWait();
@@ -71,19 +74,16 @@ public class ViewSpecialityController {
         visualize();
     }
 
-    public void setSpecialityContext(SpecialityContext specialityContext) {
-        this.specialityContext = specialityContext;
-    }
-
     public void delete() throws SQLException {
         SpecialityModel specialityModel = specialityTable.getSelectionModel().getSelectedItem();
-        specialityContext.specialityService.delete(specialityModel);
+        if (specialityModel != null) {
+            specialityService.delete(specialityModel.getCourse());
+        }
         visualize();
     }
 
     public void visualize() throws SQLException {
-        this.tableData = specialityContext.specialityService.getAll();
-
+        this.tableData = specialityService.getAll();
         specialityTable.setItems(tableData);
     }
 
