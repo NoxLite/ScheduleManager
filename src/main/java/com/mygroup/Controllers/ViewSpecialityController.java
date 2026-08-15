@@ -18,9 +18,9 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Objects;
 
-public class ViewSpecialityController {
+public class ViewSpecialityController extends BaseController{
 
-    private ObservableList tableData = FXCollections.observableArrayList();
+    private ObservableList<SpecialityModel> tableData = FXCollections.observableArrayList();
 
     @FXML
     private Button addButton;
@@ -40,13 +40,14 @@ public class ViewSpecialityController {
     }
 
     @FXML
-    public void initialize() {
+    public void initialize() throws SQLException {
         columnName.setCellValueFactory(c -> c.getValue().nameProperty());
         columnId.setCellValueFactory(c -> c.getValue().idProperty().asObject());
 
         addButton.setOnAction(actionEvent -> {
             try {
                 openWindow();
+                visualize();
             } catch (IOException | SQLException e) {
                 throw new RuntimeException(e);
             }
@@ -55,10 +56,13 @@ public class ViewSpecialityController {
         deleteButton.setOnAction(actionEvent -> {
             try {
                 delete();
+                visualize();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
         });
+
+        visualize();
     }
 
     private void openWindow() throws IOException, SQLException {
@@ -70,8 +74,6 @@ public class ViewSpecialityController {
         stage.setScene(new Scene(scene));
         stage.setResizable(false);
         stage.showAndWait();
-
-        visualize();
     }
 
     public void delete() throws SQLException {
@@ -79,7 +81,7 @@ public class ViewSpecialityController {
         if (specialityModel != null) {
             specialityService.delete(specialityModel.getCourse());
         }
-        visualize();
+
     }
 
     public void visualize() throws SQLException {

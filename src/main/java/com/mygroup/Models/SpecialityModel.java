@@ -12,6 +12,7 @@ public class SpecialityModel extends BaseModel {
     private IntegerProperty id;
     private final StringProperty name;
 
+
     public SpecialityModel(ResultSet resultSet) throws SQLException {
         super();
         id = new SimpleIntegerProperty(resultSet.getInt("id"));
@@ -33,7 +34,6 @@ public class SpecialityModel extends BaseModel {
     public SpecialityModel(String name) {
         this.name = new SimpleStringProperty(name);
     }
-
 
     public IntegerProperty idProperty() {
         return id;

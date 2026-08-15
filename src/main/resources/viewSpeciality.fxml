@@ -19,7 +19,7 @@
             <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="55.0" vgrow="ALWAYS" />
             </rowConstraints>
          <children>
-            <Button fx:id="addButton" mnemonicParsing="false" text="Добавить специальность">
+            <Button fx:id="addButton" mnemonicParsing="false" text="Добавить">
                 <graphic>
                     <FontIcon iconColor="green" iconLiteral="fas-plus" />
                 </graphic>

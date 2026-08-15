@@ -1,8 +1,6 @@
 package com.mygroup.SavesAndBases;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class DatabaseManager {
     private static final String url = "jdbc:sqlite:./src/main/java/com/mygroup/databases/base.db";
@@ -23,6 +21,20 @@ public class DatabaseManager {
         if (connection != null) {
             connection.close();
         }
+    }
+
+    public static int getCountFields(String name) throws SQLException {
+        connection = getConnection();
+
+        String query = String.format("SELECT * FROM %s", name);
+        Statement stmt = connection.createStatement();
+
+        ResultSet rs = stmt.executeQuery(query);
+        for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
+            System.out.println(rs.getMetaData().getColumnName(i));
+        }
+        ResultSetMetaData metaData = rs.getMetaData();
+        return metaData.getColumnCount();
     }
 
 }

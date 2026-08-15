@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import org.kordamp.ikonli.javafx.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mygroup.Controllers.ViewTeacherController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mygroup.Controllers.ViewGroupController">
     <children>
         <GridPane layoutX="13.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="0.0">
 
@@ -24,12 +24,12 @@
                         <FontIcon iconColor="green" iconLiteral="fas-plus" />
                     </graphic>
                 </Button>
-                <TableView fx:id="table" prefHeight="320.0" prefWidth="580.0" GridPane.rowIndex="1">
+                <TableView fx:id="groupTable" prefHeight="320.0" prefWidth="580.0" GridPane.rowIndex="1">
                     <columns>
-                  <TableColumn fx:id="idColumn" prefWidth="100.0" text="id" />
-                        <TableColumn fx:id="columnSurname" prefWidth="170.0" text="Фамилия" />
-                  <TableColumn fx:id="columnName" prefWidth="143.0" text="Имя" />
-                  <TableColumn fx:id="columnPatronymic" prefWidth="166.0" text="Отчество" />
+                        <TableColumn fx:id="columnId" prefWidth="75.0" text="id" />
+                        <TableColumn fx:id="columnSpeciality" prefWidth="270.0" text="Направление" />
+                  <TableColumn fx:id="columnCourse" prefWidth="118.0" text="Курс" />
+                  <TableColumn fx:id="columnGroup" prefWidth="115.0" text="Группа" />
                     </columns>
                 </TableView>
                 <Button fx:id="deleteButton" mnemonicParsing="false" text="Удалить" GridPane.rowIndex="2"> <graphic>

@@ -9,11 +9,20 @@ import javafx.scene.layout.StackPane;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class MainWindowController {
+
+public class MainWindowController{
+    @FXML
+    private Button groupButton;
     @FXML
     private StackPane stackPane;
     @FXML
     private Button specialityButton;
+    @FXML
+    private Button teacherButton;
+
+    private static final String viewSpecialityResource = "/viewSpeciality.fxml";
+    private static final String viewTeacherResource = "/viewTeacher.fxml";
+    private static final String viewGroupResource = "/viewGroup.fxml";
 
     @FXML
     public void initialize() throws IOException {
@@ -24,21 +33,36 @@ public class MainWindowController {
 
         specialityButton.setOnAction(actionEvent -> {
             try {
-                speciality();
-            } catch (IOException | SQLException e) {
+                openChapter(viewSpecialityResource);
+            } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         });
+
+        teacherButton.setOnAction(actionEvent -> {
+            try {
+                openChapter(viewTeacherResource);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        groupButton.setOnAction(actionEvent -> {
+            try {
+                openChapter(viewGroupResource);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
     }
 
-    public void speciality() throws IOException, SQLException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/viewSpeciality.fxml"));
+    public void openChapter(String resource) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(resource));
         Parent parent = fxmlLoader.load();
-
-        ViewSpecialityController viewSpecialityController = fxmlLoader.getController();
-        viewSpecialityController.visualize();
 
         stackPane.getChildren().clear();
         stackPane.getChildren().add(parent);
     }
 }
+

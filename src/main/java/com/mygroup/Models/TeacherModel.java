@@ -9,10 +9,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class TeacherModel extends BaseModel {
-    private StringProperty name;
-    private StringProperty surname;
-    private StringProperty patronymic;
-    private IntegerProperty id;
+    private final StringProperty name;
+    private final StringProperty surname;
+    private final StringProperty patronymic;
+    private final IntegerProperty id;
 
     public TeacherModel(ResultSet resultSet) throws SQLException {
         super();
@@ -23,23 +23,46 @@ public class TeacherModel extends BaseModel {
     }
 
     public TeacherModel(String name, String surname, String patronymic) {
-
+        this.id = new SimpleIntegerProperty();
         this.name = new SimpleStringProperty(name);
         this.surname = new SimpleStringProperty(surname);
         this.patronymic = new SimpleStringProperty(patronymic);
     }
 
-    public StringProperty getName() {
-        return name;
+
+    public String getSurname() {
+        return surname.get();
     }
 
-    public StringProperty getSurname() {
+    public StringProperty surnameProperty() {
         return surname;
     }
 
-    public StringProperty getPatronymic() {
+    public String getPatronymic() {
+        return patronymic.get();
+    }
+
+    public StringProperty patronymicProperty() {
         return patronymic;
     }
 
-    public IntegerProperty getId() {return id;}
+    public String getName() {
+        return name.get();
+    }
+
+    public StringProperty nameProperty() {
+        return name;
+    }
+
+    public int getId() {
+        return id.get();
+    }
+
+    public IntegerProperty idProperty() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id.set(id);
+    }
 }

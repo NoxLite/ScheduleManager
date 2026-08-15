@@ -39,12 +39,12 @@
                                     <FontIcon iconLiteral="mdi-format-list-bulleted" />
                                 </graphic>
                             </Button>
-                            <Button alignment="BASELINE_LEFT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Сотрудники">
+                            <Button alignment="BASELINE_LEFT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Сотрудники" fx:id="teacherButton">
                                 <graphic>
                                     <FontIcon iconLiteral="mdi-account-multiple" />
                                 </graphic>
                             </Button>
-                            <Button alignment="BASELINE_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Группы">
+                            <Button alignment="BASELINE_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Группы" fx:id="groupButton">
                                 <graphic>
                                     <FontIcon iconLiteral="mdi-school" />
                                 </graphic>

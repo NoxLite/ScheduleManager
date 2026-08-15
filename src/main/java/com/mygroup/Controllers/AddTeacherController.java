@@ -1,33 +1,32 @@
 package com.mygroup.Controllers;
 
-
 import com.mygroup.Models.SpecialityModel;
-import com.mygroup.Services.SpecialityService;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import com.mygroup.Models.TeacherModel;
+import com.mygroup.Services.TeacherService;
 import javafx.fxml.FXML;
-import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.sql.SQLException;
-import java.util.Objects;
 
-public class AddSpecialityController extends BaseController{
-    @FXML
-    private TextField specialityField;
+public class AddTeacherController {
+
     @FXML
     private Button addButton;
+    @FXML
+    private TextField nameField;
+    @FXML
+    private TextField surnameField;
+    @FXML
+    private TextField patField;
 
-    private final SpecialityService specialityService;
+    private TeacherService teacherService;
 
-    public AddSpecialityController() throws SQLException {
-        specialityService = new SpecialityService();
+    public AddTeacherController() throws SQLException{
+        teacherService = new TeacherService();
     }
-
     @FXML
     public void initialize() {
         addButton.setOnAction(actionEvent -> {
@@ -44,15 +43,17 @@ public class AddSpecialityController extends BaseController{
     }
 
     public void setData() throws SQLException {
-        specialityService.add(new SpecialityModel(specialityField.getText()));
+        teacherService.add(new TeacherModel(nameField.getText(), surnameField.getText(), patField.getText()));
     }
 
     public boolean check() throws SQLException {
-        if (specialityField.getText() == null || specialityField.getText().isBlank()) {
+        if (nameField.getText() == null || nameField.getText().isBlank() ||
+                surnameField.getText() == null || surnameField.getText().isBlank() ||
+                patField.getText() == null || patField.getText().isBlank()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Ошибка");
             alert.setHeaderText("Произошла ошибка");
-            alert.setContentText(String.format("Введите название специальности"));
+            alert.setContentText(String.format("Заполните все поля"));
             alert.showAndWait();
             return false;
         }
