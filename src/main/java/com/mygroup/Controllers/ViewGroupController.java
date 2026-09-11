@@ -62,7 +62,7 @@ public class ViewGroupController extends BaseController {
     //@todo: изменить
     private void openWindow() throws IOException, SQLException {
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/addTeacher.fxml")));
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/addGroup.fxml")));
         Parent scene = loader.load();
 
         stage.setScene(new Scene(scene));

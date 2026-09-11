@@ -32,8 +32,8 @@
                 <TextField fx:id="patField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                 <Label text="Курс" GridPane.rowIndex="1" />
                 <Label text="Название" GridPane.rowIndex="2" />
-            <ChoiceBox prefHeight="25.0" prefWidth="235.0" GridPane.columnIndex="1" />
-            <Spinner prefHeight="25.0" prefWidth="227.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ChoiceBox fx:id="specialityBox" prefHeight="25.0" prefWidth="235.0" GridPane.columnIndex="1" />
+            <Spinner fx:id="courseSpinner" editable="true" focusTraversable="false" prefHeight="25.0" prefWidth="227.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
             </children>
         </GridPane>
