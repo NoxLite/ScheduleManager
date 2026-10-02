@@ -43,7 +43,7 @@ public class SpecialityModel extends BaseModel {
         return name;
     }
 
-    public Integer getCourse() {
+    public Integer getId() {
         return id.getValue();
     }
 

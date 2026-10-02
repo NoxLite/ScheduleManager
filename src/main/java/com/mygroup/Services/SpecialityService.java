@@ -1,13 +1,12 @@
 package com.mygroup.Services;
 
 import com.mygroup.Models.SpecialityModel;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 
-import javax.management.Query;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class SpecialityService extends BaseService {
     
@@ -20,13 +19,31 @@ public class SpecialityService extends BaseService {
         return getAll(SpecialityModel::new);
     }
 
-    //@todo: переписать. работает но не красиво
     public Integer getId(String name) throws SQLException {
-        String sql = String.format("SELECT id FROM speciality WHERE name = '%s'", name);
+        String sql = "SELECT id FROM speciality WHERE name = ?";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, name);
             ResultSet result = preparedStatement.executeQuery();
-            return result.getInt(1);
+            if (result.next()) {
+                return result.getInt(1);
+            } else {
+                return -1;
+            }
+        }
+    }
+
+    public String getName(int id) throws SQLException {
+        String sql = "SELECT name FROM speciality WHERE id = ?";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                return resultSet.getString(1);
+            } else {
+                return "";
+            }
         }
     }
 

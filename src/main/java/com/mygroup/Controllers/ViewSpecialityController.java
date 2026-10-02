@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -73,13 +74,14 @@ public class ViewSpecialityController extends BaseController{
 
         stage.setScene(new Scene(scene));
         stage.setResizable(false);
+        stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
     }
 
     public void delete() throws SQLException {
         SpecialityModel specialityModel = specialityTable.getSelectionModel().getSelectedItem();
         if (specialityModel != null) {
-            specialityService.delete(specialityModel.getCourse());
+            specialityService.delete(specialityModel.getId());
         }
 
     }

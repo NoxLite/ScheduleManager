@@ -23,6 +23,14 @@ public class TeacherModel extends BaseModel {
     }
 
     public TeacherModel(String name, String surname, String patronymic) {
+        /*
+        @todo: подумать
+        Второй конструктор (int specialityId, String group, int course) не инициализирует поле id.
+        Вызов getId() у такого объекта — NullPointerException (id.getValue() по null).
+        В TeacherModel ты это обошёл через new SimpleIntegerProperty() — но тогда getId() молча вернёт 0,
+        что тоже ловушка (удаление записи с id=0).
+        Подумай, как сделать «id ещё нет» явным — например, через Optional или честный nullable с документацией.
+        */
         this.id = new SimpleIntegerProperty();
         this.name = new SimpleStringProperty(name);
         this.surname = new SimpleStringProperty(surname);

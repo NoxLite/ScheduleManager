@@ -3,13 +3,18 @@ package com.mygroup.SavesAndBases;
 import java.sql.*;
 
 public class DatabaseManager {
-    private static final String url = "jdbc:sqlite:./src/main/java/com/mygroup/databases/base.db";
+    private static String url;
+    private static final String DB_NAME = "data\\base.db?foreign_keys=on";
     private static Connection connection;
 
+    public static void initConnection() throws SQLException {
+        String projectPath = System.getProperty("user.dir");
+
+        url = "jdbc:sqlite:" + projectPath + "\\" + DB_NAME;
+        connection = DriverManager.getConnection(url);
+    }
+
     public static Connection getConnection(String url) throws SQLException {
-        if (connection == null || connection.isClosed()) {
-            connection = DriverManager.getConnection(url);
-        }
         return connection;
     }
 
@@ -21,20 +26,6 @@ public class DatabaseManager {
         if (connection != null) {
             connection.close();
         }
-    }
-
-    public static int getCountFields(String name) throws SQLException {
-        connection = getConnection();
-
-        String query = String.format("SELECT * FROM %s", name);
-        Statement stmt = connection.createStatement();
-
-        ResultSet rs = stmt.executeQuery(query);
-        for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
-            System.out.println(rs.getMetaData().getColumnName(i));
-        }
-        ResultSetMetaData metaData = rs.getMetaData();
-        return metaData.getColumnCount();
     }
 
 }

@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 import java.sql.SQLException;
 
-public class AddTeacherController {
+public class AddTeacherController extends BaseController {
 
     @FXML
     private Button addButton;
@@ -46,7 +46,7 @@ public class AddTeacherController {
         teacherService.add(new TeacherModel(nameField.getText(), surnameField.getText(), patField.getText()));
     }
 
-    public boolean check() throws SQLException {
+    public boolean check() {
         if (nameField.getText() == null || nameField.getText().isBlank() ||
                 surnameField.getText() == null || surnameField.getText().isBlank() ||
                 patField.getText() == null || patField.getText().isBlank()) {

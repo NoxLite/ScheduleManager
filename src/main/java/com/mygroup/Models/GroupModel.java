@@ -11,19 +11,27 @@ import java.sql.SQLException;
 public class GroupModel extends BaseModel{
     private IntegerProperty id;
     private final IntegerProperty specialityId;
-    private final StringProperty group;
+    private final StringProperty name;
     private final IntegerProperty course;
 
     public GroupModel(ResultSet resultSet) throws SQLException {
         id = new SimpleIntegerProperty(resultSet.getInt("id"));
         specialityId = new SimpleIntegerProperty(resultSet.getInt("speciality"));
-        group = new SimpleStringProperty(resultSet.getString("group"));
+        name = new SimpleStringProperty(resultSet.getString("name"));
         course = new SimpleIntegerProperty(resultSet.getInt("course"));
     }
 
     public GroupModel(int specialityId, String group, int course) {
+        /*
+        @todo: подумать
+        Второй конструктор (int specialityId, String group, int course) не инициализирует поле id.
+        Вызов getId() у такого объекта — NullPointerException (id.getValue() по null).
+        В TeacherModel ты это обошёл через new SimpleIntegerProperty() — но тогда getId() молча вернёт 0,
+        что тоже ловушка (удаление записи с id=0).
+        Подумай, как сделать «id ещё нет» явным — например, через Optional или честный nullable с документацией.
+        */
         this.specialityId = new SimpleIntegerProperty(specialityId);
-        this.group = new SimpleStringProperty(group);
+        this.name = new SimpleStringProperty(group);
         this.course = new SimpleIntegerProperty(course);
     }
 
@@ -39,16 +47,16 @@ public class GroupModel extends BaseModel{
         this.specialityId.set(specialityId);
     }
 
-    public String getGroup() {
-        return group.get();
+    public String getName() {
+        return name.get();
     }
 
-    public StringProperty groupProperty() {
-        return group;
+    public StringProperty nameProperty() {
+        return name;
     }
 
-    public void setGroup(String group) {
-        this.group.set(group);
+    public void setName(String name) {
+        this.name.set(name);
     }
 
     public int getCourse() {
@@ -63,7 +71,7 @@ public class GroupModel extends BaseModel{
         this.course.set(course);
     }
 
-    public IntegerProperty IdProperty() {
+    public IntegerProperty idProperty() {
         return this.id;
     }
 

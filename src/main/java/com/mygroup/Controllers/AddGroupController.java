@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import java.sql.SQLException;
 
 public class AddGroupController extends BaseController{
+    public TextField groupField;
     @FXML
     private ChoiceBox<String> specialityBox;
     @FXML
@@ -45,8 +46,8 @@ public class AddGroupController extends BaseController{
             try {
                 if (check()) {
                     setData();
-                    /*Stage stage = (Stage) addButton.getScene().getWindow();
-                    stage.close();*/
+                    Stage stage = (Stage) addButton.getScene().getWindow();
+                    stage.close();
                 }
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -56,21 +57,20 @@ public class AddGroupController extends BaseController{
 
     public void setData() throws SQLException {
         int id = specialityService.getId(specialityBox.getValue());
-        System.out.println(id);
-        //groupService.add(new GroupModel(nameField.getText(), surnameField.getText(), patField.getText()));
+        groupService.add(new GroupModel(id, groupField.getText(), courseSpinner.getValue()));
     }
 
-    public boolean check() throws SQLException {
-        /*if (nameField.getText() == null || nameField.getText().isBlank() ||
-                surnameField.getText() == null || surnameField.getText().isBlank() ||
-                patField.getText() == null || patField.getText().isBlank()) {
+    public boolean check() {
+
+        if (groupField.getText() == null || groupField.getText().isBlank() ||
+                specialityBox.getValue() == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Ошибка");
             alert.setHeaderText("Произошла ошибка");
             alert.setContentText(String.format("Заполните все поля"));
             alert.showAndWait();
             return false;
-        } */
+        }
         return true;
     }
 }

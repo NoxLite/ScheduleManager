@@ -1,25 +1,20 @@
 package com.mygroup.Controllers;
 
-import com.mygroup.Models.GroupModel;
+import com.mygroup.Models.GroupViewModel;
 import com.mygroup.Services.GroupService;
+import com.mygroup.Services.SpecialityService;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
-import com.mygroup.Models.GroupModel;
-import com.mygroup.Models.TeacherModel;
-import com.mygroup.Services.GroupService;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -30,19 +25,23 @@ public class ViewGroupController extends BaseController {
     @FXML
     private Button addButton;
     @FXML
-    private TableView<GroupModel> groupTable;
+    private Button deleteButton;
     @FXML
-    private TableColumn<GroupModel, Integer> columnId;
+    private TableView<GroupViewModel> groupTable;
     @FXML
-    private TableColumn<GroupModel, String> columnSpeciality;
+    private TableColumn<GroupViewModel, Integer> columnId;
     @FXML
-    private TableColumn<GroupModel, String> columnGroup;
+    private TableColumn<GroupViewModel, String> columnSpeciality;
     @FXML
-    private TableColumn<GroupModel, String> columnCourse;
+    private TableColumn<GroupViewModel, String> columnGroup;
+    @FXML
+    private TableColumn<GroupViewModel, Integer> columnCourse;
 
     private ObservableList data = FXCollections.observableArrayList();
 
-    private GroupService groupService;
+    private final GroupService groupService;
+
+    private SpecialityService specialityService = new SpecialityService();
 
     public ViewGroupController() throws SQLException {
         groupService = new GroupService();
@@ -50,6 +49,10 @@ public class ViewGroupController extends BaseController {
 
     @FXML
     public void initialize() throws SQLException {
+        columnId.setCellValueFactory(c -> c.getValue().idProperty().asObject());
+        columnSpeciality.setCellValueFactory(c -> c.getValue().specialityProperty());
+        columnGroup.setCellValueFactory(c -> c.getValue().nameProperty());
+        columnCourse.setCellValueFactory(c -> c.getValue().courseProperty().asObject());
         addButton.setOnAction(actionEvent -> {
             try {
                 openWindow();
@@ -58,8 +61,18 @@ public class ViewGroupController extends BaseController {
                 throw new RuntimeException(e);
             }
         });
+        deleteButton.setOnAction(actionEvent -> {
+            try {
+                delete();
+                visualize();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        visualize();
     }
-    //@todo: изменить
+
     private void openWindow() throws IOException, SQLException {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/addGroup.fxml")));
@@ -67,20 +80,21 @@ public class ViewGroupController extends BaseController {
 
         stage.setScene(new Scene(scene));
         stage.setResizable(false);
+        stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
     }
 
     private void delete() throws SQLException {
-        GroupModel groupModel = groupTable.getSelectionModel().getSelectedItem();
+        GroupViewModel groupModel = groupTable.getSelectionModel().getSelectedItem();
         if (groupModel != null) {
             groupService.delete(groupModel.getId());
         }
     }
-    //@todo: сделать так чтобы показывалось наименование специальности а не id
+
     public void visualize() throws SQLException {
+
+
         this.data = groupService.getAll();
         groupTable.setItems(data);
     }
-
-
 }

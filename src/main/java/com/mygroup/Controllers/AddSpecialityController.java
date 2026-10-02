@@ -47,7 +47,7 @@ public class AddSpecialityController extends BaseController{
         specialityService.add(new SpecialityModel(specialityField.getText()));
     }
 
-    public boolean check() throws SQLException {
+    public boolean check() {
         if (specialityField.getText() == null || specialityField.getText().isBlank()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Ошибка");

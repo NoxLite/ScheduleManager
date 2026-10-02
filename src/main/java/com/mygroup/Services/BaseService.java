@@ -5,10 +5,7 @@ import com.mygroup.SavesAndBases.DatabaseManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 
 public class BaseService<T extends BaseModel> {
@@ -27,19 +24,27 @@ public class BaseService<T extends BaseModel> {
 
     protected ObservableList<T> getAll(ResultSetMapper<T> mapper) throws SQLException {
 
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(String.format("SELECT * FROM %s", nameOfModel));
-        ObservableList<T> tableData = FXCollections.observableArrayList();
+        String sql = String.format("SELECT * FROM %s", nameOfModel);
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            ObservableList<T> tableData = FXCollections.observableArrayList();
 
-        while (resultSet.next()) {
-            tableData.add(mapper.map(resultSet));
+            while (resultSet.next()) {
+                tableData.add(mapper.map(resultSet));
+            }
+            return tableData;
         }
-        return tableData;
+
     };
 
     public void delete(int id) throws SQLException {
-        Statement statement = connection.createStatement();
-        statement.execute(String.format("DELETE FROM %s WHERE id=%d;", nameOfModel, id));
+        String sql = String.format("DELETE FROM %s WHERE id = ?", nameOfModel);
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+        }
+
     }
 
 }
