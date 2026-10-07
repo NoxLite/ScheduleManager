@@ -1,6 +1,6 @@
 package com.mygroup;
 
-import com.mygroup.SavesAndBases.DatabaseManager;
+import com.mygroup.saveAndBases.DatabaseManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

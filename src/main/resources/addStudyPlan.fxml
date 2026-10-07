@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import org.kordamp.ikonli.javafx.*?>
 
-<AnchorPane minHeight="130" minWidth="330" prefHeight="150.0" prefWidth="330.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mygroup.controllers.AddGroupController">
+<AnchorPane minHeight="130" minWidth="330" prefHeight="150.0" prefWidth="330.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mygroup.controllers.AddStudyPlanController">
     <children>
         <GridPane prefHeight="107.0" prefWidth="581.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <columnConstraints>
@@ -29,11 +29,11 @@
                         </Button>
                     </children>
                 </VBox>
-                <TextField fx:id="groupField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <TextField fx:id="subjectField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                 <Label text="Курс" GridPane.rowIndex="1" />
                 <Label text="Название" GridPane.rowIndex="2" />
-            <ChoiceBox fx:id="specialityBox" prefHeight="25.0" prefWidth="235.0" GridPane.columnIndex="1" />
-            <Spinner fx:id="courseSpinner" editable="true" focusTraversable="false" prefHeight="25.0" prefWidth="227.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <ChoiceBox fx:id="specialityBox" prefHeight="25.0" prefWidth="235.0" GridPane.columnIndex="1" />
+                <Spinner fx:id="courseSpinner" editable="true" focusTraversable="false" prefHeight="25.0" prefWidth="227.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
             </children>
         </GridPane>

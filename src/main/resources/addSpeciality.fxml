@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import org.kordamp.ikonli.javafx.*?>
 
-<AnchorPane minHeight="130" minWidth="330" prefHeight="130.0" prefWidth="330.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mygroup.Controllers.AddSpecialityController">
+<AnchorPane minHeight="130" minWidth="330" prefHeight="130.0" prefWidth="330.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mygroup.controllers.AddSpecialityController">
    <children>
       <GridPane prefHeight="107.0" prefWidth="581.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -14,12 +14,13 @@
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="0.0" prefHeight="30.0" vgrow="ALWAYS" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
           <RowConstraints minHeight="0.0" prefHeight="30.0" vgrow="ALWAYS" />
         </rowConstraints>
          <children>
             <Label prefHeight="17.0" prefWidth="136.0" text="Название" />
             <TextField fx:id="specialityField" GridPane.columnIndex="1" />
-            <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
                   <Button fx:id="addButton" mnemonicParsing="false" text="Добавить">
                           <graphic>
@@ -28,6 +29,8 @@
                   </Button>
                </children>
             </VBox>
+            <Spinner prefHeight="25.0" prefWidth="244.0" GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="durationSpinner"/>
+            <Label prefWidth="90.0" text="Длительность" GridPane.rowIndex="1" />
 
          </children>
       </GridPane>

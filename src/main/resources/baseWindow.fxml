@@ -2,9 +2,10 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import org.kordamp.ikonli.javafx.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mygroup.Controllers.MainWindowController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mygroup.controllers.MainWindowController">
 
     <children>
         <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -32,36 +33,75 @@
 
                 <HBox VBox.vgrow="ALWAYS">
                     <children>
-                        <VBox prefHeight="575.0" prefWidth="119.0" spacing="2.0">
+                        <VBox prefHeight="575.0" prefWidth="188.0" spacing="2.0">
                         <children>
-                            <Button alignment="BASELINE_LEFT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Специальности" fx:id="specialityButton">
+                        <Button fx:id="homeButton" alignment="BASELINE_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Главная">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                            <graphic>
+                                <FontIcon iconLiteral="mdi-home-variant" />
+                            </graphic>
+                        </Button>
+                            <Button fx:id="specialityButton" alignment="BASELINE_LEFT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Специальности">
                                 <graphic>
                                     <FontIcon iconLiteral="mdi-format-list-bulleted" />
                                 </graphic>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
                             </Button>
-                            <Button alignment="BASELINE_LEFT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Сотрудники" fx:id="teacherButton">
+                            <Button fx:id="teacherButton" alignment="BASELINE_LEFT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Сотрудники">
                                 <graphic>
                                     <FontIcon iconLiteral="mdi-account-multiple" />
                                 </graphic>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
                             </Button>
-                            <Button alignment="BASELINE_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Группы" fx:id="groupButton">
+                            <Button fx:id="groupButton" alignment="BASELINE_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Группы">
                                 <graphic>
                                     <FontIcon iconLiteral="mdi-school" />
                                 </graphic>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
                             </Button>
-                            <Button alignment="BASELINE_LEFT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Предметы">
+                        <Button fx:id="auditoryButton" alignment="BASELINE_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Аудитории">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                            <graphic>
+                                <FontIcon iconLiteral="mdi-domain" />
+                            </graphic>
+                        </Button>
+                            <Button fx:id="studyPlan" alignment="BASELINE_LEFT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Учебный план">
                                 <graphic>
                                     <FontIcon iconLiteral="mdi-book-open-variant" />
                                 </graphic>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
                             </Button>
+                        <Button alignment="BOTTOM_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Распределение">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                            <graphic>
+                                <FontIcon iconLiteral="mdi-account-check" />
+                            </graphic>
+                        </Button>
                             <Button alignment="BASELINE_LEFT" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Расписание">
                                 <graphic>
                                     <FontIcon iconLiteral="mdi-clock" />
                                 </graphic>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
                             </Button>
                         </children>
                         </VBox>
-                        <Separator orientation="VERTICAL" />
+                        <Separator orientation="VERTICAL" prefHeight="575.0" prefWidth="13.0" />
 
                         <StackPane fx:id="stackPane" HBox.hgrow="ALWAYS" />
                     </children>

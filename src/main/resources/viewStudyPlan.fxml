@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import org.kordamp.ikonli.javafx.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mygroup.controllers.ViewGroupController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mygroup.controllers.ViewStudyPlanController">
     <children>
         <GridPane layoutX="13.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="0.0">
 
@@ -22,23 +22,23 @@
                 <TableView fx:id="tableView" prefHeight="320.0" prefWidth="580.0" GridPane.rowIndex="1">
                     <columns>
                         <TableColumn fx:id="columnId" prefWidth="75.0" text="id" />
-                        <TableColumn fx:id="columnSpeciality" prefWidth="270.0" text="Направление" />
-                  <TableColumn fx:id="columnCourse" prefWidth="118.0" text="Курс" />
-                  <TableColumn fx:id="columnGroup" prefWidth="115.0" text="Группа" />
+                        <TableColumn fx:id="columnName" prefWidth="232.0" text="Название" />
+                  <TableColumn fx:id="specialityColumn" prefWidth="166.0" text="Специальность" />
+                  <TableColumn fx:id="courseColumn" prefWidth="106.0" text="Курс" />
                     </columns>
                 </TableView>
                 <Button fx:id="deleteButton" mnemonicParsing="false" text="Удалить" GridPane.rowIndex="2"> <graphic>
                     <FontIcon iconColor="red" iconLiteral="fas-minus" />
                 </graphic> </Button>
-            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                      <Button fx:id="addButton" mnemonicParsing="false" text="Добавить">
-                          <graphic>
-                              <FontIcon iconColor="green" iconLiteral="fas-plus" />
-                          </graphic>
-                      </Button>
-               </children>
-            </HBox>
+                <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <Button fx:id="addButton" mnemonicParsing="false" text="Добавить">
+                            <graphic>
+                                <FontIcon iconColor="green" iconLiteral="fas-plus" />
+                            </graphic>
+                        </Button>
+                    </children></HBox>
+
             </children>
 
         </GridPane>

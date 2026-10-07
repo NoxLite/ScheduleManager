@@ -13,7 +13,6 @@
                   <Font size="36.0" />
                </font>
             </Label>
-            <Label text="Выбранное сохранение: base.db" />
          </children></VBox>
    </children>
 </AnchorPane>

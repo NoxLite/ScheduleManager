@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import org.kordamp.ikonli.javafx.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mygroup.Controllers.ViewTeacherController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mygroup.controllers.ViewTeacherController">
     <children>
         <GridPane layoutX="13.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="0.0">
 
@@ -24,7 +24,7 @@
                         <FontIcon iconColor="green" iconLiteral="fas-plus" />
                     </graphic>
                 </Button>
-                <TableView fx:id="table" prefHeight="320.0" prefWidth="580.0" GridPane.rowIndex="1">
+                <TableView fx:id="tableView" prefHeight="320.0" prefWidth="580.0" GridPane.rowIndex="1">
                     <columns>
                   <TableColumn fx:id="idColumn" prefWidth="100.0" text="id" />
                         <TableColumn fx:id="columnSurname" prefWidth="170.0" text="Фамилия" />
